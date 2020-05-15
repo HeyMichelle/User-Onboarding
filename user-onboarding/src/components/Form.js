@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import * as yup from 'yup';
 
-
-
+// yup schema
 // questions for TL
-// Mention formik prev. lessions vs. difference in this one
-
 
 export default function Form() {
     // form input state-management
@@ -28,10 +26,11 @@ export default function Form() {
     const inputChanges = e => {
         console.log("input changed!", e.target.value);
         // for check boxes, apply below, not good for multiple selects
-        let value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
-        setFormState({ ...formState, [e.target.name]: e.target.value });
+        const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+        setFormState({ ...formState, [e.target.name]: value });
     }
 
+    // const validateEmail
 
     const FormWrapper = styled.div`
         display: flex;
@@ -113,8 +112,7 @@ export default function Form() {
                             name="terms"
                             id="terms"
                             checked={formState.value}
-                            onChange={inputChanges} 
-                                {/* terinary operator used for checkboxes in input change logic*/}
+                            onChange={inputChanges}
                         />
                     </label><br /><br />
 
